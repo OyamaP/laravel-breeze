@@ -1,3 +1,4 @@
 {
-    "Whoops! Something went wrong.": "エラーが発生しました"
+    "Whoops! Something went wrong.": "エラーが発生しました",
+    "auth.failed": "認証失敗しました"
 }
