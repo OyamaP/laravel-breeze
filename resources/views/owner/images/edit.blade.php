@@ -1,0 +1,40 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Image Edit
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <!-- Validation Errors -->
+                    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                    <form id="update" method="post" action="{{ route('owner.images.update', ['image' => $image->id]) }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
+                        <div class="-m-2">
+                            <div class="p-2 w-full sm:w-4/5 md:w-3/4 mx-auto">
+                                <div class="relative">
+                                    <label for="title" class="leading-7 text-sm text-gray-600">Image Title</label>
+                                    <input type="text" id="title" name="title" value="{{ $image->title }}" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                                </div>
+                             </div>
+                            <div class="p-2 w-full sm:w-4/5 md:w-3/4 mx-auto">
+                                <div class="relative w-32">
+                                    <x-thumbnail :filename="$image->filename" type="products" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="p-2 w-full sm:w-4/5 md:w-3/4 mx-auto flex justify-between mt-4">
+                        <button type="button" onclick="location.href='{{ route('owner.images.index') }}'" class="bg-gray-200 border-0 py-2 px-4 sm:px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">Back</button>
+                        <button type="submit" form="update" class="text-white bg-indigo-500 border-0 py-2 px-4 sm:px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
+                        <x-delete-button route='owner.images.destroy' param='image' :id='$image->id' />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

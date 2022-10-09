@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Owner;
+use App\Models\Shop;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Carbon\Carbon;
+use Throwable;
+use Illuminate\Support\Facades\Log;
 
 class OwnersController extends Controller
 {
@@ -25,7 +27,7 @@ class OwnersController extends Controller
     public function index()
     {
         $owners = Owner::select('id', 'name', 'email', 'created_at')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(3);
         return view('admin.owners.index', compact('owners'));
     }
@@ -54,11 +56,28 @@ class OwnersController extends Controller
             'password' => ['required', 'string', 'confirmed', 'min:8', Rules\Password::defaults()],
         ]);
 
-        Owner::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try
+        {
+            DB::transaction(function () use($request) {
+                $owner = Owner::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+                Shop::create([
+                    'owner_id' => $owner->id,
+                    'name' => 'Add Shop Name',
+                    'information' => '',
+                    'filename' => '',
+                    'is_selling' => true,
+                ]);
+            }, 2);
+        }
+        catch(Throwable $e)
+        {
+            Log::error($e);
+            throw $e;
+        }
 
         return redirect()
             ->route('admin.owners.index')
@@ -109,7 +128,7 @@ class OwnersController extends Controller
         return redirect()
             ->route('admin.owners.index')
             ->with([
-                'message' => 'Update Owner Info',
+                'message' => 'Update Owner Data',
                 'status' => 'info',
             ]);
     }

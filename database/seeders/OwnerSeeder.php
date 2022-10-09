@@ -21,37 +21,37 @@ class OwnerSeeder extends Seeder
                 'name' => 'test1',
                 'email' => 'test1@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
             [
                 'name' => 'test2',
                 'email' => 'test2@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
             [
                 'name' => 'test3',
                 'email' => 'test3@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
             [
                 'name' => 'test4',
                 'email' => 'test4@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
             [
                 'name' => 'test5',
                 'email' => 'test5@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
             [
                 'name' => 'test6',
                 'email' => 'test6@test.com',
                 'password' => Hash::make('1q2w3e4r'),
-                'created_at' => '2021/04/16 10:38:45',
+                'created_at' => '2000/01/01 00:00:00',
             ],
         ]);
     }
