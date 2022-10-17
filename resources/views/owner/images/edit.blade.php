@@ -31,7 +31,7 @@
                     <div class="p-2 w-full sm:w-4/5 md:w-3/4 mx-auto flex justify-between mt-4">
                         <button type="button" onclick="location.href='{{ route('owner.images.index') }}'" class="bg-gray-200 border-0 py-2 px-4 sm:px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">Back</button>
                         <button type="submit" form="update" class="text-white bg-indigo-500 border-0 py-2 px-4 sm:px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
-                        <x-delete-button route='owner.images.destroy' param='image' :id='$image->id' />
+                        <x-delete-button route='owner.images.destroy' param='image' :id='$image->id' method='delete' />
                     </div>
                 </div>
             </div>

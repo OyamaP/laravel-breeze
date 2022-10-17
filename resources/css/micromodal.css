@@ -12,6 +12,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 9999;
   background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
@@ -19,6 +20,7 @@
 }
 
 .modal__container {
+  z-index: 10000;
   background-color: #fff;
   padding: 30px;
   max-width: 1200px;

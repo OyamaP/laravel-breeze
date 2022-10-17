@@ -107,7 +107,7 @@
                     <div class="p-2 w-full flex justify-around mt-4">
                         <button type="button" onclick="location.href='{{ route('owner.products.index') }}'" class="bg-gray-200 border-0 py-2 px-8 focus:outline-none hover:bg-gray-400 rounded text-lg">Back</button>
                         <button type="submit" form="update" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Update</button>
-                        <x-delete-button route='owner.products.destroy' param='product' :id='$product->id' />
+                        <x-delete-button route='owner.products.destroy' param='product' :id='$product->id' method='delete' />
                     </div>
                 </div>
             </div>

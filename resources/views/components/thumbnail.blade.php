@@ -1,10 +1,7 @@
 @php
-if($type === 'shops') $path = 'storage/shops/';
-if($type === 'products') $path = 'storage/products/';
+if($type === 'shops') $dir = 'storage/shops/';
+if($type === 'products') $dir = 'storage/products/';
+$path = empty($filename) ? 'images/no_image.jpg' : $dir . $filename;
 @endphp
 
-@if(empty($filename))
-<img src="{{ asset('images/no_image.jpg') }}">
-@else
-<img src="{{ asset($path . $filename) }}">
-@endif
+<img src="{{ asset($path) }}" @if(isset($classes)) class="{{ $classes }}" @endif >
